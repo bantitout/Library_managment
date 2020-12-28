@@ -21,7 +21,7 @@ class BookRagistersController < ApplicationController
   
       respond_to do |format|
         if @book_ragister.save
-          format.html { redirect_to @book_ragister, notice: 'Thing was successfully created.' }
+          format.html { redirect_to @book_ragister, notice: 'Book was successfully created.' }
           format.json { render :show, status: :created, location: @book_ragister }
         else
           format.html { render :new }
