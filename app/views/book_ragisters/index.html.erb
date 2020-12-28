@@ -1,0 +1,39 @@
+
+
+<h1>Book Ragister...</h1>
+<% if current_user%>
+<table>
+  <thead>
+    <tr>
+      <th>Book Assign Date....................</th>
+      <th>Book Due Date.....................</th>
+       <th>Book Return Date.....................</th>
+      <th>Book Name</th>
+      <th>Student Name</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @book_ragisters.each do |book_ragister| %>
+      <tr>
+        <td><%= book_ragister.assign_date %></td>
+        <td><%= book_ragister.due_date %></td>
+         <td><%= book_ragister.return_date %></td>
+        <td><%= book_ragister.book.book_name %></td>
+        <td><%= book_ragister.student.student_name %></td>
+        <td><%= link_to 'Show', book_ragister %></td>
+        <%if current_user && current_user.admin %>
+        <td><%= link_to 'Edit', edit_book_ragister_path(book_ragister) %></td>
+        <td><%= link_to 'Destroy', book_ragister, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%end%>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @book_ragisters %>
+<%= link_to 'New Entry Ragister', new_book_ragister_path %>
+
+<%else%>
+<h1>plz login first</h1>
+<%end%>
+<br>

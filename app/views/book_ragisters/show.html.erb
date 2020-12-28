@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Book Assign Date:</strong>
+
+  <%= @book_ragister.assign_date %>
+</p>
+
+<p>
+  <strong>Book Return Date:</strong>
+  <%= @book_ragister.due_date %>
+</p>
+
+<%= link_to 'Edit', edit_book_ragister_path(@book_ragister) %> |
+<%= link_to 'Back', book_ragisters_path %>
