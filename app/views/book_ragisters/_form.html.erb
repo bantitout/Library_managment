@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :book_name %><br>
-    <%= form.collection_select :book_id, Book.left_outer_joins(:book_ragisters).select(:book_name), :id, :book_name %><br>
+    <%= form.collection_select :book_id,Book.left_outer_joins(:book_ragisters).select(:book_name,:id) - Book.joins(:book_ragisters).select(:book_name,:id), :id, :book_name %><br>
   </div><br>
   <div class="field">
     <%= form.label :student_name %><br>
@@ -32,3 +32,4 @@
 <% end %>
 
 <%# Author.left_outer_joins(:books).select(:author_name) %>
+ <%# Book.left_outer_joins(:book_ragisters).select(:book_name) %>
