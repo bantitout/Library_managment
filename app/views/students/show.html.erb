@@ -1,14 +1,30 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Student Name:</strong>
-  <%= @student.student_name %>
-</p>
 
-<p>
-  <strong>Class:</strong>
-  <%= @student.class1 %>
-</p>
+<h1>Your Book Details</h1>
+<% if current_user%>
+<table>
+  <thead>
+    <tr>
+      <th>Book Assign Date....................</th>
+      <th>Book Due Date.....................</th>
+       <th>Book Return Date.....................</th>
+      <th>Book Name</th>
+    </tr>
+  </thead>
 
-<%= link_to 'Edit', edit_student_path(@student) %> |
-<%= link_to 'Back', students_path %>
+  <tbody>
+    <% @book_ragisters.each do |book_ragister| %>
+      <tr>
+        <td><%= book_ragister.assign_date %></td>
+        <td><%= book_ragister.due_date %></td>
+         <td><%= book_ragister.return_date %></td>
+        <td><%= book_ragister.book.book_name %></td>         
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @book_ragisters %>
+<%else%>
+<h1>plz login first</h1>
+<%end%>
+<br>

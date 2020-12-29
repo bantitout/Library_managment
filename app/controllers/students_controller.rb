@@ -6,6 +6,7 @@ class StudentsController < ApplicationController
     end
   
     def show
+      @book_ragisters = BookRagister.where(student_id: @student.id).paginate(page: params[:page],per_page: 2).order("created_at DESC")
     end
   
     def new

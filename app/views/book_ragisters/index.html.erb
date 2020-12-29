@@ -20,9 +20,11 @@
         <td><%= book_ragister.due_date %></td>
          <td><%= book_ragister.return_date %></td>
         <td><%= book_ragister.book.book_name %></td>
-        <td><%= book_ragister.student.student_name %></td>
+
+        <td><%= link_to "#{book_ragister.student.student_name}",student_path(book_ragister.student.id) %></td>
+
         <td><%= link_to 'Show', book_ragister %></td>
-        <%if current_user && current_user.admin %>
+        <%if current_user && current_user.admin? %>
         <td><%= link_to 'Edit', edit_book_ragister_path(book_ragister) %></td>
         <td><%= link_to 'Destroy', book_ragister, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <%end%>
