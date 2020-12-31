@@ -50,14 +50,31 @@ class StudentsController < ApplicationController
         format.json { head :no_content }
       end
     end
-  
+
+    def defaulter
+      # @student.toggle!(:enabled)
+      @student = Student.find(params[:id])
+      respond_to do |format|
+        if @student.defaulter?
+          @student.update(defaulter: false)
+          format.html{ redirect_to students_url }
+          format.js
+
+        else
+          @student.update(defaulter: true)
+          format.html{ redirect_to students_url }
+          format.js
+        end
+      end
+    end
+
     private
       def set_student
         @student = Student.find(params[:id])
       end
 
       def student_params
-        params.require(:student).permit(:student_name, :class1)
+        params.require(:student).permit(:student_name, :class1, :defaulter)
       end
   end
   

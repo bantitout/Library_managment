@@ -1,6 +1,11 @@
 
 
+
+<%if current_user && current_user.admin %>
+ <%= link_to 'Students List', students_path %>
+<%end%>
 <h1>Book Ragister...</h1>
+
 <% if current_user%>
 <table>
   <thead>

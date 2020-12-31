@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_30_065313) do
+ActiveRecord::Schema.define(version: 2020_12_31_054645) do
 
   create_table "authors", force: :cascade do |t|
     t.string "author_name"
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 2020_12_30_065313) do
     t.string "class1"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "defaulter", default: true
   end
 
   create_table "users", force: :cascade do |t|
