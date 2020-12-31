@@ -2,7 +2,15 @@
       <tr id="student_<%= student.id %>">
         <td><%= student.student_name %></td>
         <td><%= student.class1 %></td>
-        <td> <%= link_to "#{ student.defaulter ? 'Active' : 'Deactive' }", defaulter_student_path(student) , method: :patch ,remote:  true %></td>
+        <td> <%if student.defaulter? %>
+                <%= "Deactive"%>
+             <%else%>
+                <%= "active"%>
+             <%end%>      
+        </td>
+
+        <td> <%= link_to "Active", active_student_path(student) , method: :patch ,remote:  true %>/
+        <%= link_to "Deactive", deactive_student_path(student) , method: :patch ,remote:  true %></td>
         <td><%= link_to 'Show', student %></td>
         <td><%= link_to 'Edit', edit_student_path(student) %></td>
         <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>

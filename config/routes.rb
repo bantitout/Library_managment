@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   
   resources :students do
     member do
-      patch 'defaulter'
+      patch 'active'
+      patch 'deactive'
       # more routes
     end
   end

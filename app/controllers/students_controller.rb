@@ -51,18 +51,21 @@ class StudentsController < ApplicationController
       end
     end
 
-    def defaulter
-      # @student.toggle!(:enabled)
+    def active
       @student = Student.find(params[:id])
       respond_to do |format|
         if @student.defaulter?
           @student.update(defaulter: false)
-          format.html{ redirect_to students_url }
           format.js
+        end
+      end
+    end
 
-        else
+    def deactive
+      @student = Student.find(params[:id])
+      respond_to do |format|
+        if @student.defaulter? == false
           @student.update(defaulter: true)
-          format.html{ redirect_to students_url }
           format.js
         end
       end
